@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');
+
+:root {
+  --color-background: #fde74c;
+  --color-foreground: #100b00;
+  --color-player1: blue;
+  --color-player2: green;
+}
+
+* {
+  font-family: 'Koulen', cursive;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+html,
+body {
+  margin: 0px;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--color-background);
+}

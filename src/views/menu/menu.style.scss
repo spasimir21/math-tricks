@@ -1,0 +1,132 @@
+mt--menu {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+mt--menu h1 {
+  margin: 0px;
+  font-weight: bold;
+  font-size: 48px;
+}
+
+mt--menu p {
+  margin: 0px;
+  font-size: 28px;
+}
+
+mt--menu .play-button {
+  font-size: 38px;
+}
+
+mt--board-size-selector {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+}
+
+mt--board-size-selector input {
+  padding: 10px;
+  font-size: 28px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+}
+
+.player-name-input {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+}
+
+.player-name-input input {
+  padding: 10px;
+  font-size: 28px;
+  height: 50px;
+  width: 30vw;
+}
+
+mt--player-name-inputs {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+}
+
+mt--scores {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+}
+
+mt--menu .button:hover {
+  transform: scale(1.1) translateY(1%);
+  cursor: pointer;
+}
+
+mt--bot-difficulty-selector {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 25px;
+  background: white;
+  outline: none;
+  border-radius: 10px;
+}
+
+.slider:hover {
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: black;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: black;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+@media (max-width: 800px) and (max-height: 900px) {
+  mt--menu h1 {
+    font-size: 36px;
+  }
+
+  mt--menu p {
+    margin: 0px;
+    font-size: 22px;
+  }
+
+  mt--menu .play-button {
+    font-size: 32px;
+  }
+
+  mt--board-size-selector input {
+    font-size: 16px;
+  }
+}

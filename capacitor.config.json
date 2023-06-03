@@ -1,0 +1,6 @@
+{
+  "appId": "com.mathTricks.sp",
+  "appName": "Math Tricks",
+  "webDir": "dist",
+  "bundledWebRuntime": true
+}
