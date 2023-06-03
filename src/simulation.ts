@@ -170,7 +170,7 @@ class MathTricksSimulation {
 
     if (x < this.size[0] - 1 && !hasBeenUsed(this.cells.get(playerPosition + 1))) cells.add(playerPosition + 1);
 
-    if (y < this.size[0] - 1) {
+    if (y < this.size[1] - 1) {
       if (x > 0 && !hasBeenUsed(this.cells.get(playerPosition + this.size[0] - 1))) cells.add(playerPosition + this.size[0] - 1);
 
       if (!hasBeenUsed(this.cells.get(playerPosition + this.size[0]))) cells.add(playerPosition + this.size[0]);
