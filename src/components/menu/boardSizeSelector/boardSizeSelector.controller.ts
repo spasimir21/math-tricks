@@ -1,7 +1,6 @@
-import { Controller, ReactiveController } from '@uix';
 import { Effect, State } from '@reactivity';
+import { Controller } from '@uix';
 
-@ReactiveController
 class BoardSizeSelectorController extends Controller<{}, { valid: boolean }, { width: number; height: number }> {
   @State
   sizeInputValues: [string, string] = ['0', '0'];
@@ -29,7 +28,14 @@ class BoardSizeSelectorController extends Controller<{}, { valid: boolean }, { w
     const boardWidth = parseInt(this.sizeInputValues[0]);
     const boardHeight = parseInt(this.sizeInputValues[1]);
 
-    if (isNaN(boardWidth) || isNaN(boardHeight) || boardWidth < 4 || boardWidth > 20 || boardHeight < 4 || boardHeight > 20) {
+    if (
+      isNaN(boardWidth) ||
+      isNaN(boardHeight) ||
+      boardWidth < 4 ||
+      boardWidth > 20 ||
+      boardHeight < 4 ||
+      boardHeight > 20
+    ) {
       this._exports.valid = false;
       return;
     }

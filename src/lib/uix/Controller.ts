@@ -1,4 +1,11 @@
-import { DecorationType, applyDecoration, cleanupDecorations } from '../reactivity';
+import {
+  DecorationType,
+  applyDecoration,
+  applyDecorations,
+  cleanupDecorations,
+  markReactive,
+  setRaw
+} from '../reactivity';
 import { UixComponent } from './ui/component/Component';
 
 class Controller<TProps = any, TExports = any, TShared = any, TAttributes extends string = any> {
@@ -12,6 +19,9 @@ class Controller<TProps = any, TExports = any, TShared = any, TAttributes extend
     public readonly shared: TShared,
     public readonly context: any
   ) {
+    markReactive(this);
+    setRaw(this, this);
+
     applyDecoration(this, 'isMounted', {
       type: DecorationType.State,
       data: null
@@ -20,6 +30,7 @@ class Controller<TProps = any, TExports = any, TShared = any, TAttributes extend
 
   $init() {
     this.init();
+    applyDecorations(this);
   }
 
   protected init() {}

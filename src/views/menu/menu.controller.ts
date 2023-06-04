@@ -1,10 +1,9 @@
 import { GameSaveData, $globalGameSave } from '../../save';
-import { Controller, ReactiveController } from '@uix';
 import { deepClone } from '../../helpers/deepClone';
 import { Computed, State } from '@reactivity';
+import { Controller } from '@uix';
 import { Router } from '@router';
 
-@ReactiveController
 class MenuController extends Controller {
   @State
   gameSaveData: GameSaveData = null as any;

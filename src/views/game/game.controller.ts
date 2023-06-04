@@ -1,11 +1,10 @@
 import { PlayState, Player, MathTricksSimulation } from 'simulation';
-import { Controller, ReactiveController } from '@uix';
 import { Computed, Effect } from '@reactivity';
 import { $globalGameSave } from 'save';
+import { Controller } from '@uix';
 import { Stamat } from 'Stamat';
 import { CONFIG } from 'config';
 
-@ReactiveController
 class GameController extends Controller {
   simulation: MathTricksSimulation = null as any;
   stamat: Stamat | null = null;

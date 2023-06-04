@@ -1,6 +1,5 @@
-import { Controller, ReactiveController } from '@uix';
+import { Controller } from '@uix';
 
-@ReactiveController
 class ScoresController extends Controller<{}, {}, { scores: Record<string, number> }> {
   resetScores() {
     for (const player in this.shared.scores) delete this.shared.scores[player];

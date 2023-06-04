@@ -1,9 +1,8 @@
-import { Controller, ReactiveController } from '@uix';
 import { MathTricksSimulation } from 'simulation';
 import { decode, Operation } from 'cellEncoding';
 import { Computed } from '@reactivity';
+import { Controller } from '@uix';
 
-@ReactiveController
 class CellController extends Controller<{ position: number }> {
   @Computed
   get cellData() {
@@ -38,7 +37,10 @@ class CellController extends Controller<{ position: number }> {
 
   @Computed
   get isPlayable() {
-    return this.context.canInteract && (this.context.simulation as MathTricksSimulation).playableCells.has(this.props.position);
+    return (
+      this.context.canInteract &&
+      (this.context.simulation as MathTricksSimulation).playableCells.has(this.props.position)
+    );
   }
 
   play() {

@@ -1,11 +1,10 @@
 import { GridSettings, GridSizeCalculator } from './GridSizeCalculator';
-import { Controller, ReactiveController } from '@uix';
 import { Effect, reactive } from '@reactivity';
+import { Controller } from '@uix';
 
 const PADDING = 10;
 const CELL_GAP = 1;
 
-@ReactiveController
 class GridController extends Controller {
   private sizeCalculator: GridSizeCalculator = null as any;
   gridSettings: GridSettings = null as any;

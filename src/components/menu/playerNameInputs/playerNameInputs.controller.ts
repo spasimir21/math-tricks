@@ -1,7 +1,6 @@
-import { Controller, ReactiveController } from '@uix';
 import { Effect, State } from '@reactivity';
+import { Controller } from '@uix';
 
-@ReactiveController
 class PlayerNameInputsController extends Controller<
   { vsBot: boolean },
   { valid: boolean },

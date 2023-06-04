@@ -1,7 +1,6 @@
-import { Controller, ReactiveController } from '@uix';
 import { Computed, Effect, State } from '@reactivity';
+import { Controller } from '@uix';
 
-@ReactiveController
 class BotDifficultySelectorController extends Controller<{ cells: number }, {}, { difficulty: number }> {
   @State
   difficultyInputValue: string = '1';

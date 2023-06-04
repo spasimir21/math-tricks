@@ -27,6 +27,5 @@ export * from './ui/style/Stylesheet';
 
 export * from './ui/view';
 
-export * from './ReactiveController';
 export * from './Controller';
 export * from './Registry';

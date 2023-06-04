@@ -1,6 +1,5 @@
-import { Controller, ReactiveController } from '@uix';
+import { Controller } from '@uix';
 
-@ReactiveController
 class BotToggleController extends Controller<{}, {}, { vsBot: boolean }> {
   toggle() {
     this.shared.vsBot = !this.shared.vsBot;

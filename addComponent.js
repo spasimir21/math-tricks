@@ -20,9 +20,8 @@ fs.mkdirSync(componentDir, { recursive: true });
 
 fs.writeFileSync(
   path.join(componentDir, `${componentName}.controller.ts`),
-  `import { Controller, ReactiveController } from '@uix';
+  `import { Controller } from '@uix';
 
-@ReactiveController
 class ${capitalize(componentName)}Controller extends Controller {
 }
 
