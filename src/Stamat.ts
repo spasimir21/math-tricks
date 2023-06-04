@@ -10,7 +10,6 @@ function evaluateState(simulation: MathTricksSimulation): number {
 // Minimax Algorithm
 function minimax(
   depth: number,
-  maximizing: boolean,
   prevSimulation: MathTricksSimulation,
   evaluateState: (simulation: MathTricksSimulation) => number,
   alpha: number = -Infinity,
@@ -22,12 +21,13 @@ function minimax(
 
   if (depth == 0 || simulation.gameState.playState != PlayState.Playing) return [null, evaluateState(simulation)];
 
+  const maximizing = simulation.gameState.currentPlayer === Player.Player1;
   if (maximizing) {
     let maxEval = -Infinity;
     let maxMove = null;
 
     for (const move of simulation.playableCells) {
-      const evaluation = minimax(depth - 1, false, simulation, evaluateState, alpha, beta, move)[1];
+      const evaluation = minimax(depth - 1, simulation, evaluateState, alpha, beta, move)[1];
 
       if (evaluation >= maxEval) {
         maxEval = evaluation;
@@ -44,7 +44,7 @@ function minimax(
     let minMove = null;
 
     for (const move of simulation.playableCells) {
-      const evaluation = minimax(depth - 1, true, simulation, evaluateState, alpha, beta, move)[1];
+      const evaluation = minimax(depth - 1, simulation, evaluateState, alpha, beta, move)[1];
 
       if (evaluation <= minEval) {
         minEval = evaluation;
@@ -69,7 +69,7 @@ class Stamat {
   }
 
   public makeMove() {
-    const [move, _evaluation] = minimax(this.difficulty, false, this.simulation, evaluateState);
+    const [move, _evaluation] = minimax(this.difficulty, this.simulation, evaluateState);
     this.simulation.makePlay(move ?? 0);
   }
 }
