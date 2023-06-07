@@ -67,6 +67,10 @@ class GameController extends Controller {
     if (this.stamat == null) return;
 
     if (this.simulation.gameState.currentPlayer === Player.Player1) {
+      setTimeout(() => {
+        this.context.boardEvaluation = (this.stamat as Stamat).evaluateState();
+      }, 100);
+
       this.context.canInteract = true;
       return;
     }

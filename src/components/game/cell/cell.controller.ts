@@ -10,6 +10,21 @@ class CellController extends Controller<{ position: number }> {
   }
 
   @Computed
+  get debugText() {
+    if (this.context.boardEvaluation == null) return '';
+
+    let text = '';
+
+    if (this.props.position === this.context.boardEvaluation.bestMove)
+      text += `Best (${this.context.boardEvaluation.bestEvaluation}) `;
+
+    if (this.props.position === this.context.boardEvaluation.worstMove)
+      text += `Worst (${this.context.boardEvaluation.worstEvaluation})`;
+
+    return text;
+  }
+
+  @Computed
   get classes() {
     const classes: string[] = [];
 

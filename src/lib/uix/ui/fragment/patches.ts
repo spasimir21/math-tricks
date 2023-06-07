@@ -23,6 +23,10 @@ const _Element_replaceWith = Element.prototype.replaceWith;
 
 Element.prototype.replaceWith = function (...nodes: (string | Node)[]) {
   _Element_replaceWith.call(this, ...nodes);
+
+  if ((this as any).fragmentParent != null)
+    ((this as any).fragmentParent as Fragment)._replaceChildInNodeArray(this, ...(nodes as any[]));
+
   for (const node of nodes) if (node instanceof Fragment) node.insertNodes();
 };
 
@@ -30,5 +34,9 @@ const _CharacterData_replaceWith = CharacterData.prototype.replaceWith;
 
 CharacterData.prototype.replaceWith = function (...nodes: (string | Node)[]) {
   _CharacterData_replaceWith.call(this, ...nodes);
+
+  if ((this as any).fragmentParent != null)
+    ((this as any).fragmentParent as Fragment)._replaceChildInNodeArray(this, ...(nodes as any[]));
+
   for (const node of nodes) if (node instanceof Fragment) node.insertNodes();
 };

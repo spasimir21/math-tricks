@@ -36,11 +36,20 @@ mt--grid {
 }
 
 mt--cell {
+  position: relative;
   display: grid;
   place-items: center;
   background-color: white;
   width: var(--cell-size);
   height: var(--cell-size);
+}
+
+mt--cell .debug {
+  position: absolute;
+  margin: 0px;
+  top: 0px;
+  left: 5px;
+  font-size: 12px;
 }
 
 mt--cell.active {

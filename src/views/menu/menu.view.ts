@@ -1,17 +1,24 @@
 import { _event, _export, _if, prop, shared, styleProperty, view, component, initComponent } from '@uix';
 import { MenuController } from './menu.controller';
 
-const botDifficultySelectorView = view<MenuController>(`<placeholder $='botDifficultySelector'></placeholder>`, (elements, $) => [
-  component(elements, 'botDifficultySelector', $, 'bot-difficulty-selector'),
-  prop(elements['botDifficultySelector'] as any, 'cells', () => $.gameSaveData.boardSize[0] * $.gameSaveData.boardSize[1]),
-  shared(
-    elements['botDifficultySelector'] as any,
-    'difficulty',
-    () => $.gameSaveData.botDifficulty,
-    v => ($.gameSaveData.botDifficulty = v)
-  ),
-  initComponent(elements['botDifficultySelector'] as any)
-]);
+const botDifficultySelectorView = view<MenuController>(
+  `<placeholder $='botDifficultySelector'></placeholder>`,
+  (elements, $) => [
+    component(elements, 'botDifficultySelector', $, 'bot-difficulty-selector'),
+    prop(
+      elements['botDifficultySelector'] as any,
+      'cells',
+      () => $.gameSaveData.boardSize[0] * $.gameSaveData.boardSize[1]
+    ),
+    shared(
+      elements['botDifficultySelector'] as any,
+      'difficulty',
+      () => $.gameSaveData.botDifficulty,
+      v => ($.gameSaveData.botDifficulty = v)
+    ),
+    initComponent(elements['botDifficultySelector'] as any)
+  ]
+);
 
 const menuView = view<MenuController>(
   `

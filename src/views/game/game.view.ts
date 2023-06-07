@@ -1,7 +1,17 @@
-import { _event, _if, component, initComponent, ref, styleProperty, textContent, view } from '@uix';
+import { _event, _if, component, initComponent, placeholder, ref, styleProperty, textContent, view } from '@uix';
 import { GameController } from './game.controller';
 import { PlayState } from 'simulation';
 import { Router } from '@router';
+
+const evaluationView = view<GameController>(
+  `
+  <p class='game-text'>Evaluation: <placeholder $='evaluation'></placeholder></p>
+`,
+  (elements, $) => [
+    placeholder(elements, 'evaluation', document.createTextNode('') as any),
+    textContent(elements['evaluation'], () => $.context.boardEvaluation?.bestEvaluation)
+  ]
+);
 
 const turnTextView = view<GameController>(
   `
@@ -17,6 +27,7 @@ const scoresView = view<GameController>(
   `
   <p class='game-text' style='color: var(--color-player1)' $='player1Score'></p>
   <p class='game-text' style='color: var(--color-player2)' $='player2Score'></p>
+  <placeholder $='evaluation'></placeholder>
 `,
   (elements, $) => [
     textContent(
@@ -26,17 +37,18 @@ const scoresView = view<GameController>(
     textContent(
       elements['player2Score'],
       () => `${$.context.gameInfo.playerNames[1]}: ${$.context.simulation.gameState.playerScores[1]}`
-    )
+    ),
+    _if(elements['evaluation'], $, () => $.context.boardEvaluation != null, evaluationView, null)
   ]
 );
 
 const gameStateView = view<GameController>(
   `
-  <p class='game-text' $='gameStateTest'></p>
+  <p class='game-text' $='gameStateText'></p>
 `,
   (elements, $) => [
-    textContent(elements['gameStateTest'], () => $.gameStateText),
-    styleProperty(elements['gameStateTest'], 'color', () => $.gameStateTextColor)
+    textContent(elements['gameStateText'], () => $.gameStateText),
+    styleProperty(elements['gameStateText'], 'color', () => $.gameStateTextColor)
   ]
 );
 
@@ -72,7 +84,13 @@ const gameView = view<GameController>(
       turnTextView,
       gameEndControlsView
     ),
-    _if(elements['gameTop'], $, () => $.simulation.gameState.playState === PlayState.Playing, scoresView, gameStateView),
+    _if(
+      elements['gameTop'],
+      $,
+      () => $.simulation.gameState.playState === PlayState.Playing,
+      scoresView,
+      gameStateView
+    ),
     component(elements, 'grid', $, 'grid'),
     initComponent(elements['grid'] as any)
   ]
