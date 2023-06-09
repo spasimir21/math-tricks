@@ -1,5 +1,5 @@
 import { GridSettings, GridSizeCalculator } from './GridSizeCalculator';
-import { Effect, reactive } from '@reactivity';
+import { Effect, reactive, registerDependency } from '@reactivity';
 import { Controller } from '@uix';
 
 const PADDING = 10;
@@ -17,7 +17,10 @@ class GridController extends Controller {
       padding: PADDING
     });
 
-    this.sizeCalculator = new GridSizeCalculator(this.context.gridContainer, this.gridSettings);
+    this.sizeCalculator = registerDependency(
+      this,
+      new GridSizeCalculator(this.context.gridContainer, this.gridSettings)
+    );
   }
 
   @Effect
@@ -34,10 +37,6 @@ class GridController extends Controller {
     root.style.setProperty('--grid-width', `${this.sizeCalculator.containerWidth}px`);
     root.style.setProperty('--grid-height', `${this.sizeCalculator.containerHeight}px`);
     root.style.setProperty('--cell-size', `${this.sizeCalculator.cellSize}px`);
-  }
-
-  override onKill() {
-    this.sizeCalculator.cleanup();
   }
 }
 

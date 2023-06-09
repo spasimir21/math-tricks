@@ -1,4 +1,4 @@
-import { Effect, Reactive, State, reactive } from '@reactivity';
+import { Effect, Reactive, ReactiveDependency, State, reactive, registerDependency } from '@reactivity';
 
 interface GridSettings {
   width: number;
@@ -7,20 +7,24 @@ interface GridSettings {
   padding: number;
 }
 
-function getReactiveElementSize(element: HTMLElement) {
+function getReactiveElementSize(element: HTMLElement): ReactiveDependency<{ width: number; height: number }> {
   const size = reactive({
     width: 0,
     height: 0
   });
 
   const resizeObserver = new ResizeObserver(([entry]) => {
+    if (entry == null) return;
     size.width = entry.contentRect.width;
     size.height = entry.contentRect.height;
   });
 
   resizeObserver.observe(element, { box: 'border-box' });
 
-  return { size, cleanup: () => resizeObserver.disconnect() };
+  return {
+    dependency: size,
+    cleanup: () => resizeObserver.disconnect()
+  };
 }
 
 @Reactive
@@ -32,13 +36,10 @@ class GridSizeCalculator {
   @State
   cellSize: number = 0;
 
-  private readonly reactiveSizeCleanup;
   private readonly elementSize;
 
   constructor(element: HTMLElement, public readonly gridSettings: GridSettings) {
-    const reactiveSize = getReactiveElementSize(element);
-    this.reactiveSizeCleanup = reactiveSize.cleanup;
-    this.elementSize = reactiveSize.size;
+    this.elementSize = registerDependency(this, getReactiveElementSize(element));
   }
 
   @Effect
@@ -60,10 +61,6 @@ class GridSizeCalculator {
       this.gridSettings.cellGap + (this.cellSize + this.gridSettings.cellGap) * this.gridSettings.width;
     this.containerHeight =
       this.gridSettings.cellGap + (this.cellSize + this.gridSettings.cellGap) * this.gridSettings.height;
-  }
-
-  cleanup() {
-    this.reactiveSizeCleanup();
   }
 }
 

@@ -3,6 +3,7 @@ import {
   applyDecoration,
   applyDecorations,
   cleanupDecorations,
+  cleanupDependencies,
   markReactive,
   setRaw
 } from '../reactivity';
@@ -19,6 +20,8 @@ class Controller<TProps = any, TExports = any, TShared = any, TAttributes extend
     public readonly shared: TShared,
     public readonly context: any
   ) {
+    this.cleanup = this.cleanup.bind(this);
+
     markReactive(this);
     setRaw(this, this);
 
@@ -65,6 +68,7 @@ class Controller<TProps = any, TExports = any, TShared = any, TAttributes extend
   cleanup() {
     this.onKill();
     cleanupDecorations(this);
+    cleanupDependencies(this);
   }
 }
 
