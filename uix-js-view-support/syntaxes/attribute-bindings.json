@@ -1,0 +1,27 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "scopeName": "uix.injection.attribute-bindings",
+  "injectionSelector": "L:meta.tag",
+  "patterns": [
+    {
+      "include": "#attribute-bindings"
+    }
+  ],
+  "repository": {
+    "attribute-bindings": {
+      "begin": "((a|attr|ba|bool-attr|p|prop|s|shared|e|export|d|direct)?:|@|\\.|#)([a-zA-Z0-9\\-\\:\\#]+?)\\s*(=)\\s*('|\")",
+      "end": "(\\5)",
+      "beginCaptures": {
+        "1": { "name": "punctuation" },
+        "3": { "name": "entity.other.attribute-name" },
+        "4": { "name": "punctuation" },
+        "5": { "name": "punctuation" }
+      },
+      "endCaptures": {
+        "1": { "name": "punctuation" }
+      },
+      "patterns": [{ "include": "source.js" }],
+      "name": "attribute-bindings"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="./menu.style.scss" />
+
+<h1>MATH TRICKS</h1>
+
+<board-size-selector
+  shared:width="$.gameSaveData.boardSize[0]"
+  shared:height="$.gameSaveData.boardSize[1]"
+  export:valid="$.isBoardSizeValid"
+/>
+
+<scores shared:scores="$.gameSaveData.scores" />
+
+<bot-toggle shared:vsBot="$.gameSaveData.vsBot" />
+
+<if #="$.gameSaveData.vsBot">
+  <bot-difficulty-selector
+    prop:cells="$.gameSaveData.boardSize[0] * $.gameSaveData.boardSize[1]"
+    shared:difficulty="$.gameSaveData.botDifficulty"
+  />
+</if>
+
+<player-name-inputs
+  prop:vsBot="$.gameSaveData.vsBot"
+  shared:player1Name="$.gameSaveData.playerNames[0]"
+  shared:player2Name="$.gameSaveData.playerNames[1]"
+  export:valid="$.arePlayerNamesValid"
+/>
+
+<p class="button play-button" @click="$.play()" #color="$.valid ? 'black' : 'red'">PLAY</p>

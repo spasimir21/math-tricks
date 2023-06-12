@@ -1,0 +1,10 @@
+<each #="player : Object.keys($.shared.scores)">
+  <p class="button" @click="$.removeScore($.player)">${ $.player } - ${ $.shared.scores[$.player] ?? 0 }</p>
+</each>
+<else>
+  <p>NO SCORES YET!</p>
+</else>
+
+<if #="Object.keys($.shared.scores).length > 0">
+  <p class="button" @click="$.resetScores()">RESET</p>
+</if>

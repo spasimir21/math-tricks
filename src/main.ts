@@ -1,6 +1,6 @@
 import { startFaviconSwitching } from './favicon';
-import { createRegistry } from '@uix';
-import { Router } from '@router';
+import { createRegistry } from 'uix';
+import { Router } from 'router';
 import './cellEncoding';
 
 const FAVICON_CYCLE = 10;

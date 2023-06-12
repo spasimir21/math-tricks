@@ -1,8 +1,8 @@
-import { CellData, decode, encode, hasBeenUsed, Operation } from 'cellEncoding';
+import { CellData, decode, encode, hasBeenUsed, Operation } from './cellEncoding';
 import { ReactiveUInt8Array } from './helpers/ReactiveUInt8Array';
-import { deepClone } from 'helpers/deepClone';
-import { Reactive, State } from '@reactivity';
-import { generateFullBoard } from 'generator';
+import { generateFullBoard } from './generator';
+import { deepClone } from './helpers/deepClone';
+import { Reactive, State } from 'reactivity';
 
 enum PlayState {
   Playing,
@@ -158,7 +158,8 @@ class MathTricksSimulation {
     const y = Math.floor(playerPosition / this.size[0]);
 
     if (y > 0) {
-      if (x > 0 && !hasBeenUsed(this.cells.get(playerPosition - this.size[0] - 1))) cells.add(playerPosition - this.size[0] - 1);
+      if (x > 0 && !hasBeenUsed(this.cells.get(playerPosition - this.size[0] - 1)))
+        cells.add(playerPosition - this.size[0] - 1);
 
       if (!hasBeenUsed(this.cells.get(playerPosition - this.size[0]))) cells.add(playerPosition - this.size[0]);
 
@@ -171,7 +172,8 @@ class MathTricksSimulation {
     if (x < this.size[0] - 1 && !hasBeenUsed(this.cells.get(playerPosition + 1))) cells.add(playerPosition + 1);
 
     if (y < this.size[1] - 1) {
-      if (x > 0 && !hasBeenUsed(this.cells.get(playerPosition + this.size[0] - 1))) cells.add(playerPosition + this.size[0] - 1);
+      if (x > 0 && !hasBeenUsed(this.cells.get(playerPosition + this.size[0] - 1)))
+        cells.add(playerPosition + this.size[0] - 1);
 
       if (!hasBeenUsed(this.cells.get(playerPosition + this.size[0]))) cells.add(playerPosition + this.size[0]);
 
@@ -192,7 +194,10 @@ class MathTricksSimulation {
                     : this.gameState.playerScores[0] === this.gameState.playerScores[1] ? PlayState.Draw
                     : PlayState.Win;
 
-    return [playState, this.gameState.playerScores[0] > this.gameState.playerScores[1] ? Player.Player1 : Player.Player2];
+    return [
+      playState,
+      this.gameState.playerScores[0] > this.gameState.playerScores[1] ? Player.Player1 : Player.Player2
+    ];
   }
 
   private setCellState(cell: number, data: CellData) {

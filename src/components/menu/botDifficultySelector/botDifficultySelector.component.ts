@@ -1,11 +1,35 @@
-import { BotDifficultySelectorController } from './botDifficultySelector.controller';
-import { botDifficultySelectorView } from './botDifficultySelector.view';
-import { defineComponent } from '@uix';
+import defineComponent from './botDifficultySelector.view.html';
+import { Computed, Effect, State } from 'reactivity';
+import { Controller } from 'uix';
+
+class BotDifficultySelectorController extends Controller<{ cells: number }, {}, { difficulty: number }> {
+  @State
+  difficultyInputValue: string = '1';
+
+  @Computed
+  get maxDifficulty(): number {
+    return this.props.cells <= 100 ? 4 : this.props.cells <= 250 ? 3 : this.props.cells <= 500 ? 2 : 1;
+  }
+
+  @Effect
+  private ensureMaxDifficulty() {
+    if (this.shared.difficulty > this.maxDifficulty) this.shared.difficulty = this.maxDifficulty;
+  }
+
+  @Effect
+  private updateInputValues() {
+    this.difficultyInputValue = this.shared.difficulty.toString();
+  }
+
+  @Effect
+  private update() {
+    this.shared.difficulty = parseInt(this.difficultyInputValue);
+  }
+}
 
 const botDifficultySelectorComponent = defineComponent({
   name: 'bot-difficulty-selector',
-  controller: BotDifficultySelectorController,
-  view: botDifficultySelectorView
+  controller: BotDifficultySelectorController
 });
 
 export default botDifficultySelectorComponent;

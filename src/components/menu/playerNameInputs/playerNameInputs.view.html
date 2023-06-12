@@ -1,0 +1,15 @@
+<insert> import { CONFIG } from '../../../config'; </insert>
+
+<div class="player-name-input">
+  <p #color="$._exports.valid ? CONFIG.playerColors[0] : 'red'">PLAYER 1'S NAME:</p>
+  <input :value#="$.nameInputValues[0]" />
+</div>
+
+<div class="player-name-input">
+  <p #color="$._exports.valid ? CONFIG.playerColors[1] : 'red'">PLAYER 2'S NAME:</p>
+  <input
+    bool-attr:disabled="$.props.vsBot"
+    direct:value="$.props.vsBot ? 'STAMAT' : $.nameInputValues[1]"
+    @input="$.nameInputValues[1] = e.target.value"
+  />
+</div>

@@ -1,0 +1,44 @@
+{
+  "name": "uix-js-view-support",
+  "displayName": "Uix.js View Support",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.79.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "grammars": [
+      {
+        "scopeName": "uix.injection.interpolation",
+        "path": "./syntaxes/interpolation.json",
+        "injectTo": [
+          "text.html"
+        ]
+      },
+      {
+        "scopeName": "uix.injection.insert-tag",
+        "path": "./syntaxes/insert-tag.json",
+        "injectTo": [
+          "text.html"
+        ]
+      },
+      {
+        "scopeName": "uix.injection.attribute-bindings",
+        "path": "./syntaxes/attribute-bindings.json",
+        "injectTo": [
+          "text.html"
+        ]
+      },
+      {
+        "scopeName": "uix.injection.special-tags",
+        "path": "./syntaxes/special-tags.json",
+        "injectTo": [
+          "text.html"
+        ]
+      }
+    ]
+  }
+}

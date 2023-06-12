@@ -1,11 +1,15 @@
-import { BotToggleController } from './botToggle.controller';
-import { botToggleView } from './botToggle.view';
-import { defineComponent } from '@uix';
+import defineComponent from './botToggle.view.html';
+import { Controller } from 'uix';
+
+class BotToggleController extends Controller<{}, {}, { vsBot: boolean }> {
+  toggle() {
+    this.shared.vsBot = !this.shared.vsBot;
+  }
+}
 
 const botToggleComponent = defineComponent({
   name: 'bot-toggle',
-  controller: BotToggleController,
-  view: botToggleView
+  controller: BotToggleController
 });
 
 export default botToggleComponent;

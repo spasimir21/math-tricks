@@ -1,7 +1,12 @@
 {
   "extends": "@parcel/config-default",
-  "resolvers": [
-    "parcel-resolver-ts-base-url",
-    "..."
-  ]
+  "transformers": {
+    "*.view.html": [
+      "parcel-transformer-uix-view"
+    ],
+    "uix-stylesheet:*": [
+      "...",
+      "parcel-transformer-uix-stylesheet"
+    ]
+  }
 }

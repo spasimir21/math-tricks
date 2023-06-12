@@ -1,4 +1,4 @@
-import { Effect, Reactive, ReactiveDependency, State, reactive, registerDependency } from '@reactivity';
+import { Effect, Reactive, ReactiveDependency, State, reactive, registerDependency } from 'reactivity';
 
 interface GridSettings {
   width: number;

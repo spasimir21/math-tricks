@@ -1,4 +1,4 @@
-import { Operation } from 'cellEncoding';
+import { Operation } from './cellEncoding';
 
 interface Cell {
   operation: Operation;
@@ -17,7 +17,15 @@ function generateBoardWithAddSub(count: number) {
   return board;
 }
 
-function copy(target: Cell[], targetWidth: number, source: Cell[], x: number, y: number, width: number, height: number) {
+function copy(
+  target: Cell[],
+  targetWidth: number,
+  source: Cell[],
+  x: number,
+  y: number,
+  width: number,
+  height: number
+) {
   for (let i = 0; i < height; i++) {
     for (let j = 0; j < width; j++) {
       const targetPosition = (y + i) * targetWidth + x + j;

@@ -1,4 +1,4 @@
-import { Player } from 'simulation';
+import { Player } from './simulation';
 
 enum Operation {
   Add,
