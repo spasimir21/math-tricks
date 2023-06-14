@@ -5,6 +5,9 @@
   "patterns": [
     {
       "include": "#attribute-bindings"
+    },
+    {
+      "include": "#attribute-ignore"
     }
   ],
   "repository": {
@@ -22,6 +25,10 @@
       },
       "patterns": [{ "include": "source.js" }],
       "name": "attribute-bindings"
+    },
+    "attribute-ignore": {
+      "match": "(?<=\\s)\\$i(?=\\s+|\\s*/?>)",
+      "name": "punctuation"
     }
   }
 }
