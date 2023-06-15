@@ -17,6 +17,9 @@
     },
     {
       "include": "#component-tag"
+    },
+    {
+      "include": "#asset-tag"
     }
   ],
   "repository": {
@@ -72,6 +75,18 @@
     },
     "component-tag": {
       "begin": "(<)(component)",
+      "end": "/>",
+      "beginCaptures": {
+        "1": { "name": "punctuation" },
+        "2": { "name": "storage.type" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation" }
+      },
+      "contentName": "meta.tag.other.unrecognized.html.derivative"
+    },
+    "asset-tag": {
+      "begin": "(<)(asset)",
       "end": "/>",
       "beginCaptures": {
         "1": { "name": "punctuation" },

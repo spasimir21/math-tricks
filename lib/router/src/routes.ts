@@ -22,6 +22,7 @@ function getRouteComponentNodeName(routeComponent: RouteComponent): string {
 
 interface RouteDefinition {
   name: string;
+  title?: string | ((route: Route) => string);
   path: string;
   component: RouteComponent;
   children?: RouteDefinition[];
@@ -29,6 +30,7 @@ interface RouteDefinition {
 
 interface ProcessedRouteDefinition {
   name: string;
+  title: string | ((route: Route) => string) | null;
   stringPath: string;
   path: RegExp;
   component: string;
@@ -49,6 +51,7 @@ function processRouteDefinition(
 
   routes[routeDefinition.name] = {
     name: routeDefinition.name,
+    title: routeDefinition.title ?? null,
     stringPath: parentPath + routeDefinition.path,
     path: pathToRegExp(parentPath + routeDefinition.path),
     component: getRouteComponentNodeName(routeDefinition.component)
@@ -67,6 +70,7 @@ function matchPath(pathname: string, path: RegExp) {
 }
 
 interface Route {
+  title: string | null;
   name: string;
   component: string;
   path: string;
@@ -93,7 +97,8 @@ function matchLocationToRoute(
     matchedParams = params;
   }
 
-  return {
+  const route: Route = {
+    title: null,
     name: matchedRouteDef ? matchedRouteDef.name : '_fallback',
     component: matchedRouteDef ? matchedRouteDef.component : fallbackComponent,
     path: location.pathname,
@@ -101,6 +106,11 @@ function matchLocationToRoute(
     search: new URLSearchParams(location.search),
     hash: location.hash.slice(1)
   };
+
+  if (matchedRouteDef?.title != null)
+    route.title = typeof matchedRouteDef.title === 'string' ? matchedRouteDef.title : matchedRouteDef.title(route);
+
+  return route;
 }
 
 export {

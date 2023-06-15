@@ -1,6 +1,6 @@
 import { Effect, Reactive, reactive } from 'reactivity';
 import { GotoLocation, gotoLocation } from './goto';
-import { UixComponent } from 'uix';
+import { UixComponent, context } from 'uix';
 import {
   ProcessedRouteDefinition,
   Route,
@@ -19,11 +19,17 @@ class Router {
   private readonly fallbackComponent: string;
 
   private currentComponent: UixComponent = document.createComment('') as any;
+  private context: any = {};
 
-  constructor(routeDefinitions: RouteDefinition[], fallbackComponent: RouteComponent = 'router--fallback') {
+  constructor(
+    routeDefinitions: RouteDefinition[],
+    context?: any,
+    fallbackComponent: RouteComponent = 'router--fallback'
+  ) {
     for (const routeDefinition of routeDefinitions) processRouteDefinition(routeDefinition, '', this.routeDefinitions);
 
     this.fallbackComponent = getRouteComponentNodeName(fallbackComponent);
+    this.context = context ?? this.context;
     this.updateRoute();
 
     window.addEventListener('popstate', this.updateRoute.bind(this));
@@ -50,12 +56,21 @@ class Router {
   @Effect<Router>(router => router.route.component)
   private updateComponent() {
     const newComponent = document.createElement(this.route.component) as UixComponent;
+
+    newComponent.context = context(newComponent.context, this.context);
     newComponent.context.route = this.route;
     newComponent.context.router = this;
+
     newComponent.allowInitialization();
 
     this.currentComponent.replaceWith(newComponent);
     this.currentComponent = newComponent;
+  }
+
+  @Effect
+  private updatePageTitle() {
+    if (this.route.title == null) return;
+    document.title = this.route.title;
   }
 }
 

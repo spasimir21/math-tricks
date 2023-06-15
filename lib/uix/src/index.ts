@@ -1,3 +1,4 @@
+export * from './helpers/context';
 export * from './helpers/range';
 
 export * from './ui/component/ComponentRegistry';

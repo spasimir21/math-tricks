@@ -19,7 +19,7 @@ function addComponent(rootDir, componentName, hasStyle) {
 
   fs.writeFileSync(
     path.join(componentDir, `${componentName}.view.html`),
-    `${hasStyle ? `<link rel="stylesheet" href="./${componentName}.style.scss" />` : ''}
+    `${hasStyle ? `<link rel="stylesheet" href="./${componentName}.style.scss" scoped />` : ''}
 `
   );
 

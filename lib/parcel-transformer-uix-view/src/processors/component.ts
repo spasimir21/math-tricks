@@ -1,28 +1,32 @@
 import { getElementViewId, getElementViewSelector } from '../elementViewId';
+import { isCustomComponent } from '../isCustomComponent';
 import { Node, HTMLElement } from 'node-html-parser';
-import { HTML_ELEMENTS } from '../htmlElements';
+import { ViewModuleData } from '../module';
 import { ViewData } from '../view';
 
 const $IS_COMPONENT = Symbol('$IS_COMPONENT');
 
-function processComponent(element: Node, view: ViewData) {
+function processComponent(element: Node, view: ViewData, viewModule: ViewModuleData) {
   if (!(element instanceof HTMLElement) || element.tagName == null) return false;
 
-  const tagName = element.tagName.toLowerCase();
-  if (HTML_ELEMENTS.has(tagName) || tagName === 'component' || tagName === 'placeholder') return false;
+  if (!isCustomComponent(element)) {
+    element.removeAttribute('$nc');
+    return false;
+  }
 
   const viewId = getElementViewId(element);
 
-  element.tagName = 'PLACEHOLDER';
-  (element as any)[$IS_COMPONENT] = true;
-
-  const tagNameParts = tagName.split(':');
+  const tagNameParts = element.tagName.toLowerCase().split(':');
   const registryName = tagNameParts.length === 1 ? null : tagNameParts.shift();
   const componentName = tagNameParts.join(':');
 
+  // prettier-ignore
   view.instructions.push(
-    `u.component(e, '${viewId}', $, '${componentName}'${registryName ? `, '${registryName}'` : ''})`
+    `u.component(e, '${viewId}', '${viewModule.styleScopeId}', $, '${componentName}'${registryName ? `, '${registryName}'` : ''})`
   );
+
+  element.tagName = 'PLACEHOLDER';
+  (element as any)[$IS_COMPONENT] = true;
 
   return false;
 }

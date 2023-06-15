@@ -15,9 +15,10 @@ function _forEach(
   const viewInstances: ViewInstance<any>[] = [];
   const fragment = new Fragment([]);
 
-  const emptyViewElement = emptyViewInstance ? viewToElement(emptyViewInstance) : document.createComment('');
+  const emptyViewElement = emptyViewInstance ? viewToElement(emptyViewInstance) : document.createComment('each');
 
   let currentMounted = placeholder as ChildNode;
+  currentMounted.replaceWith(document.createComment(''), currentMounted);
 
   const effectCleanup = effect(() => {
     const array = getValues();
@@ -27,7 +28,10 @@ function _forEach(
     TrackStack.push();
     if (lengthDelta > 0) {
       for (let i = viewInstances.length; i < array.length; i++) {
-        const viewInstance = entryView.instantiate(scope(reactive({ [iteratorKey]: array[i] }), data));
+        const viewInstance = entryView.instantiate(
+          scope(reactive({ [iteratorKey]: array[i], [iteratorKey + 'Index']: i }), data)
+        );
+
         fragment.appendChild(viewToElement(viewInstance));
         viewInstances.push(viewInstance);
       }

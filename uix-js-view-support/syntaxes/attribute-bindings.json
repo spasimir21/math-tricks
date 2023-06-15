@@ -8,6 +8,12 @@
     },
     {
       "include": "#attribute-ignore"
+    },
+    {
+      "include": "#attribute-not-component"
+    },
+    {
+      "include": "#attribute"
     }
   ],
   "repository": {
@@ -29,6 +35,24 @@
     "attribute-ignore": {
       "match": "(?<=\\s)\\$i(?=\\s+|\\s*/?>)",
       "name": "punctuation"
+    },
+    "attribute-not-component": {
+      "match": "(?<=\\s)\\$nc(?=\\s+|\\s*/?>)",
+      "name": "punctuation"
+    },
+    "attribute": {
+      "begin": "([a-zA-Z0-9\\-\\:\\#]+?)\\s*(=)\\s*('|\")",
+      "end": "(\\3)",
+      "beginCaptures": {
+        "1": { "name": "entity.other.attribute-name" },
+        "2": { "name": "punctuation" },
+        "3": { "name": "punctuation" }
+      },
+      "endCaptures": {
+        "1": { "name": "punctuation" }
+      },
+      "contentName": "string",
+      "name": "attribute"
     }
   }
 }

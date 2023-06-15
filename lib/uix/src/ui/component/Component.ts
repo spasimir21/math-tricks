@@ -57,6 +57,8 @@ class UixComponent extends HTMLElement {
     this.canInitialize = true;
 
     this.registry.components.onComponentInfoPresent(this.componentName, this.onLoaded.bind(this));
+
+    this.setAttribute(this.componentName, '');
   }
 
   onLoaded(componentInfo: ComponentInfo) {

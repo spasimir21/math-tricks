@@ -9,6 +9,7 @@ function _condition<T>(placeholder: Element, data: T, views: [() => boolean, Vie
   const viewElements = viewInstances.map(viewToElement);
 
   let currentMounted: ChildNode = placeholder;
+  currentMounted.replaceWith(document.createComment(''), currentMounted);
 
   const effectCleanup = effect(() => {
     let newMounted = elseViewElement;

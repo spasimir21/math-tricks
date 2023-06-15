@@ -11,12 +11,26 @@ interface ViewInstance<T> {
 }
 
 interface View<T> {
+  styleScopeId: string | null;
   template: HTMLTemplateElement;
   instructionsFunction: ViewInstructionsFunction<T>;
   instantiate: (data: T) => ViewInstance<T>;
 }
 
-function view<T>(templateSource: string, instructionsFunction: ViewInstructionsFunction<T>): View<T> {
+function addStyleScopeIdToElement(element: HTMLElement, styleScopeId: string) {
+  element.setAttribute(styleScopeId, '');
+
+  for (const node of element.childNodes) {
+    if (node.nodeType !== Node.ELEMENT_NODE) continue;
+    addStyleScopeIdToElement(node as HTMLElement, styleScopeId);
+  }
+}
+
+function view<T>(
+  styleScopeId: string | null,
+  templateSource: string,
+  instructionsFunction: ViewInstructionsFunction<T>
+): View<T> {
   const template = document.createElement('template');
   template.innerHTML = `<div>${templateSource}</div>`;
 
@@ -32,7 +46,10 @@ function view<T>(templateSource: string, instructionsFunction: ViewInstructionsF
     rootElement.removeChild(child);
   }
 
+  if (styleScopeId != null) addStyleScopeIdToElement(rootElement, styleScopeId);
+
   const view: View<T> = {
+    styleScopeId,
     template,
     instructionsFunction,
     instantiate: data => instantiateView(view, data)

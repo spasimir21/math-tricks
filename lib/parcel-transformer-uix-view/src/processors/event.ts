@@ -18,11 +18,18 @@ function processEvents(element: Node, view: ViewData) {
     if (preventDefault) eventName = eventName.slice(0, -1);
 
     const eventProps = new Set(attribNameParts.slice(1));
+
+    const stopPropagation = eventProps.has('stopPropagation');
     const once = eventProps.has('once');
 
     const code = element.getAttribute(attribName);
 
-    const callbackCode = preventDefault ? `{e.preventDefault();${code}}` : `(${code})`;
+    const eventFunctions: string[] = [];
+    if (stopPropagation) eventFunctions.push('stopPropagation');
+    if (preventDefault) eventFunctions.push('preventDefault');
+
+    const callbackCode =
+      eventFunctions.length > 0 ? `{${eventFunctions.map(f => `e.${f}()`).join(';')};${code}}` : `(${code})`;
 
     view.instructions.push(`u._event(${viewSelector}, '${eventName}', e => ${callbackCode}, { once: ${once} })`);
 

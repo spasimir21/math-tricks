@@ -12,6 +12,8 @@ type Decoration = { type: DecorationType; data: any };
 
 type Decorations = Record<string | number | symbol, Decoration>;
 
+const DECORATION_APPLICATION_ORDER = [DecorationType.State, DecorationType.Computed, DecorationType.Effect];
+
 const $DECORATIONS = Symbol('$DECORATIONS');
 const $NODES = Symbol('$NODES');
 
@@ -79,7 +81,14 @@ function applyDecoration(target: any, prop: string | number | symbol, decoration
 
 function applyDecorations(target: any, decorations?: Decorations) {
   if (decorations == null) decorations = (target[$DECORATIONS] ?? {}) as Decorations;
-  for (const prop in decorations) applyDecoration(target, prop, decorations[prop]);
+
+  for (const decorationType of DECORATION_APPLICATION_ORDER) {
+    for (const prop in decorations) {
+      const decoration = decorations[prop];
+      if (decoration.type !== decorationType) continue;
+      applyDecoration(target, prop, decoration);
+    }
+  }
 }
 
 function cleanupDecorations(target: any) {

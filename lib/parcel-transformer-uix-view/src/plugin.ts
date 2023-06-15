@@ -6,7 +6,7 @@ const viewTransformer = new Transformer({
     const code = await asset.getCode();
 
     asset.type = 'js';
-    asset.setCode(compile(code));
+    asset.setCode(await compile(code));
 
     return [asset];
   }

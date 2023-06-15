@@ -28,8 +28,9 @@ function makeObjectReactive(object: any): any {
       if (prop === $RAW) return target;
 
       if (TrackStack.isTracking) {
-        if (nodes.key[prop] == null) nodes.key[prop] = new SubscribableNode();
-        nodes.key[prop].track();
+        const tempProp = '$' + prop.toString();
+        if (nodes.key[tempProp] == null) nodes.key[tempProp] = new SubscribableNode();
+        nodes.key[tempProp].track();
       }
 
       return Reflect.get(target, prop);
@@ -44,21 +45,23 @@ function makeObjectReactive(object: any): any {
 
       if (!didSet || isEqual(oldValue, newValue)) return didSet;
 
+      const tempProp = '$' + prop.toString();
       if (!hasProp) {
-        if (nodes.has[prop] != null) nodes.has[prop].emitChange();
+        if (nodes.has[tempProp] != null) nodes.has[tempProp].emitChange();
         nodes.$keys.emitChange();
       }
 
-      if (nodes.key[prop] != null) nodes.key[prop].emitChange();
+      if (nodes.key[tempProp] != null) nodes.key[tempProp].emitChange();
 
       return didSet;
     },
     has(target, prop) {
       if (prop === $RAW || prop === $IS_REACTIVE) return true;
 
+      const tempProp = '$' + prop.toString();
       if (TrackStack.isTracking) {
-        if (nodes.has[prop] == null) nodes.has[prop] = new SubscribableNode();
-        nodes.has[prop].track();
+        if (nodes.has[tempProp] == null) nodes.has[tempProp] = new SubscribableNode();
+        nodes.has[tempProp].track();
       }
 
       return Reflect.has(target, prop);
@@ -75,8 +78,9 @@ function makeObjectReactive(object: any): any {
 
       if (!hasProp || !didDelete) return didDelete;
 
-      if (nodes.key[prop] != null) nodes.key[prop].emitChange();
-      if (nodes.has[prop] != null) nodes.has[prop].emitChange();
+      const tempProp = '$' + prop.toString();
+      if (nodes.key[tempProp] != null) nodes.key[tempProp].emitChange();
+      if (nodes.has[tempProp] != null) nodes.has[tempProp].emitChange();
       nodes.$keys.emitChange();
 
       return didDelete;

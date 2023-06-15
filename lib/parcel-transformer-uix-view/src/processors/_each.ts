@@ -3,7 +3,7 @@ import { Node, HTMLElement } from 'node-html-parser';
 import { processElement } from './processElement';
 import { ViewData, createView } from '../view';
 import { ViewModuleData } from '../module';
-import { markRemoved } from './removed';
+import { markRemoved } from '../removed';
 import { id } from '../id';
 
 function viewFromElement(element: HTMLElement, viewModule: ViewModuleData) {

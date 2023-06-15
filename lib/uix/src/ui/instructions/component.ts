@@ -6,6 +6,7 @@ import { Registry } from '../../Registry';
 function component(
   elements: Record<string, HTMLElement>,
   placeholderId: string,
+  styleScopeId: string,
   controller: Controller,
   componentName: string,
   otherRegistry?: Registry | string
@@ -15,6 +16,7 @@ function component(
     : `${controller.component.registry.registryNamespace}--${componentName}`;
 
   const newComponent = document.createElement(fullComponentName) as UixComponent;
+  newComponent.setAttribute(styleScopeId, '');
   newComponent.isControlled = true;
 
   newComponent.context = context(newComponent.context, controller.context);
