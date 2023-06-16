@@ -8,13 +8,16 @@
     "build": "tsc"
   },
   "devDependencies": {
+    "@types/entities": "^2.0.0",
+    "@types/he": "^1.2.0",
     "@types/node": "^20.3.1",
     "typescript": "^5.1.3"
   },
   "dependencies": {
     "@minify-html/node": "^0.11.1",
     "@parcel/plugin": "^2.5.0",
-    "node-html-parser": "file:./node-html-parser-lib",
+    "css-select": "^5.1.0",
+    "he": "^1.2.0",
     "parcel-transformer-uix-stylesheet": "file:../parcel-transformer-uix-stylesheet"
   },
   "author": "Spasimir Pavlov",

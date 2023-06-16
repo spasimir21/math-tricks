@@ -1,4 +1,4 @@
-import { HTMLElement, Node, TextNode, NodeType } from 'node-html-parser';
+import { HTMLElement, Node, TextNode, NodeType } from '../node-html-parser';
 import { getElementViewId } from '../elementViewId';
 import { ViewData } from '../view';
 
@@ -92,7 +92,7 @@ function processText(node: Node, view: ViewData) {
 
   for (const node of nodes) fragment.appendChild(node);
 
-  node.parentNode.exchangeChild(node, fragment);
+  (node.parentNode as HTMLElement).exchangeChild(node, fragment);
 
   return true;
 }

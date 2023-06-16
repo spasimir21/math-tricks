@@ -1,4 +1,4 @@
-import { Node, HTMLElement } from 'node-html-parser';
+import { Node, HTMLElement } from '../node-html-parser';
 
 function processIgnored(element: Node) {
   if (!(element instanceof HTMLElement)) return false;

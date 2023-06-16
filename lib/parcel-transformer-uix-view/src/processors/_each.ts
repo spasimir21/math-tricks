@@ -1,5 +1,5 @@
 import { getElementViewSelector } from '../elementViewId';
-import { Node, HTMLElement } from 'node-html-parser';
+import { Node, HTMLElement } from '../node-html-parser';
 import { processElement } from './processElement';
 import { ViewData, createView } from '../view';
 import { ViewModuleData } from '../module';

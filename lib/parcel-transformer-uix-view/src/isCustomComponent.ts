@@ -1,4 +1,4 @@
-import { HTMLElement } from 'node-html-parser';
+import { HTMLElement } from './node-html-parser';
 
 const HTML_AND_SVG_ELEMENTS = new Set([
   'a',

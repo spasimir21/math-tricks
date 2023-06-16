@@ -1,4 +1,4 @@
-import { HTMLElement } from 'node-html-parser';
+import { HTMLElement } from './node-html-parser';
 import { id } from './id';
 
 function getElementViewSelector(element: HTMLElement): string {

@@ -1,6 +1,6 @@
 import { compileViewModule, createViewModule } from './module';
 import { processElement } from './processors/processElement';
-import { parse } from 'node-html-parser';
+import { parse } from './node-html-parser';
 import { createView } from './view';
 
 function compile(source: string) {

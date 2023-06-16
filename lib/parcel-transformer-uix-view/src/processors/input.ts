@@ -1,5 +1,5 @@
 import { getElementViewSelector } from '../elementViewId';
-import { Node, HTMLElement } from 'node-html-parser';
+import { Node, HTMLElement } from '../node-html-parser';
 import { ViewData } from '../view';
 
 function processInputs(element: Node, view: ViewData) {

@@ -1,6 +1,6 @@
 import { addStyleScopeIdToElement } from './addStyleScopeId';
 import { cancelTemplateString } from './cancelTemplateString';
-import { HTMLElement } from 'node-html-parser';
+import { HTMLElement } from './node-html-parser';
 import { minify } from '@minify-html/node';
 
 interface ViewData {

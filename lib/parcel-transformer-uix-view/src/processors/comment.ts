@@ -1,4 +1,4 @@
-import { Node, NodeType } from 'node-html-parser';
+import { Node, NodeType } from '../node-html-parser';
 
 function processComments(node: Node) {
   if (node.nodeType !== NodeType.COMMENT_NODE) return false;

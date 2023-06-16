@@ -1,4 +1,4 @@
-import { HTMLElement } from 'node-html-parser';
+import { HTMLElement } from './node-html-parser';
 
 function addStyleScopeIdToElement(element: HTMLElement, styleScopeId: string) {
   element.setAttribute(styleScopeId, '');

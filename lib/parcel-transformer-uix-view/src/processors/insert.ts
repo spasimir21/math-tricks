@@ -1,4 +1,4 @@
-import { Node, HTMLElement } from 'node-html-parser';
+import { Node, HTMLElement } from '../node-html-parser';
 import { ViewModuleData } from '../module';
 import { ViewData } from '../view';
 
