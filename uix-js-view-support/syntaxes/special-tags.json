@@ -17,14 +17,11 @@
     },
     {
       "include": "#component-tag"
-    },
-    {
-      "include": "#asset-tag"
     }
   ],
   "repository": {
     "if-open": {
-      "begin": "(<)((else\\-)?if)(\\s+#\\s*=)\\s*(\"|')",
+      "begin": "(<)((else\\-)?if)(\\s+_\\s*=)\\s*(\"|')",
       "end": "\\5\\s*>",
       "beginCaptures": {
         "1": { "name": "punctuation" },
@@ -39,7 +36,7 @@
       "name": "if-open"
     },
     "each-open": {
-      "begin": "(<)(each)(\\s+#\\s*=)\\s*(\"|')(.+?)(:)",
+      "begin": "(<)(each)(\\s+_\\s*=)\\s*(\"|')(.+?)(:)",
       "end": "\\4\\s*>",
       "beginCaptures": {
         "1": { "name": "punctuation" },
@@ -75,18 +72,6 @@
     },
     "component-tag": {
       "begin": "(<)(component)",
-      "end": "/>",
-      "beginCaptures": {
-        "1": { "name": "punctuation" },
-        "2": { "name": "storage.type" }
-      },
-      "endCaptures": {
-        "0": { "name": "punctuation" }
-      },
-      "contentName": "meta.tag.other.unrecognized.html.derivative"
-    },
-    "asset-tag": {
-      "begin": "(<)(asset)",
       "end": "/>",
       "beginCaptures": {
         "1": { "name": "punctuation" },

@@ -11,7 +11,7 @@ function processInputs(element: Node, view: ViewData) {
   const viewSelector = getElementViewSelector(element);
 
   for (const attribName of attribsToBeProcessed) {
-    const delayed = !attribName.endsWith('#');
+    const delayed = !attribName.endsWith('!');
     const inputName = attribName.slice(1, delayed ? undefined : -1);
     const code = element.getAttribute(attribName);
 

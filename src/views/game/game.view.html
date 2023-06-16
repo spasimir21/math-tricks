@@ -3,14 +3,14 @@
 <link rel="stylesheet" href="./game.style.scss" />
 
 <div class="game-top">
-  <if #="$.simulation.gameState.playState === PlayState.Playing">
+  <if _="$.simulation.gameState.playState === PlayState.Playing">
     <p class="game-text" style="color: var(--color-player1)">
       ${ $.context.gameInfo.playerNames[0] }: ${ $.context.simulation.gameState.playerScores[0] }
     </p>
     <p class="game-text" style="color: var(--color-player2)">
       ${ $.context.gameInfo.playerNames[1] }: ${ $.context.simulation.gameState.playerScores[1] }
     </p>
-    <if #="$.context.boardEvaluation != null">
+    <if _="$.context.boardEvaluation != null">
       <p class="game-text">Evaluation: ${ $.context.boardEvaluation?.bestEvaluation }</p>
     </if>
   </if>
@@ -24,7 +24,7 @@
 </div>
 
 <div class="game-bottom">
-  <if #="$.simulation.gameState.playState === PlayState.Playing">
+  <if _="$.simulation.gameState.playState === PlayState.Playing">
     <p #color="$.gameTurnTextColor" class="game-text">${ $.gameTurnText }</p>
   </if>
   <else>

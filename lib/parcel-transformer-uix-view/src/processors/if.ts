@@ -19,7 +19,7 @@ function processElementChain(elementChain: HTMLElement[], viewModule: ViewModule
 
     processElement(viewFragment, view, viewModule);
 
-    const condition = element.getAttribute('#') ?? null;
+    const condition = element.getAttribute('_') ?? null;
 
     chain.push([condition, view]);
   }
@@ -66,7 +66,7 @@ function processIf(element: Node, view: ViewData, viewModule: ViewModuleData) {
   }
 
   element.tagName = 'PLACEHOLDER';
-  element.removeAttribute('#');
+  element.removeAttribute('_');
 
   return true;
 }

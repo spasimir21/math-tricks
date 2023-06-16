@@ -14,7 +14,7 @@ function processEvents(element: Node, view: ViewData) {
     let attribNameParts = attribName.split(':');
 
     let eventName = attribNameParts[0].slice(1);
-    const preventDefault = eventName.endsWith('#');
+    const preventDefault = eventName.endsWith('!');
     if (preventDefault) eventName = eventName.slice(0, -1);
 
     const eventProps = new Set(attribNameParts.slice(1));

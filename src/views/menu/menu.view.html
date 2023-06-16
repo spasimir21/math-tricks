@@ -12,7 +12,7 @@
 
 <bot-toggle shared:vsBot="$.gameSaveData.vsBot" />
 
-<if #="$.gameSaveData.vsBot">
+<if _="$.gameSaveData.vsBot">
   <bot-difficulty-selector
     prop:cells="$.gameSaveData.boardSize[0] * $.gameSaveData.boardSize[1]"
     shared:difficulty="$.gameSaveData.botDifficulty"

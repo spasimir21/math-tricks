@@ -2,7 +2,7 @@
 
 <div class="player-name-input">
   <p #color="$._exports.valid ? CONFIG.playerColors[0] : 'red'">PLAYER 1'S NAME:</p>
-  <input :value#="$.nameInputValues[0]" />
+  <input :value!="$.nameInputValues[0]" />
 </div>
 
 <div class="player-name-input">

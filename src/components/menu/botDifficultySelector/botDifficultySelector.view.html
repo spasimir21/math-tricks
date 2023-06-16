@@ -1,7 +1,7 @@
 <p>Bot Difficulty:</p>
 
-<if #="$.maxDifficulty > 1">
-  <input class="slider" type="range" min="1" attr:max="$.maxDifficulty.toString()" :value#="$.difficultyInputValue" />
+<if _="$.maxDifficulty > 1">
+  <input class="slider" type="range" min="1" attr:max="$.maxDifficulty.toString()" :value!="$.difficultyInputValue" />
 </if>
 
 <p>${ $.difficultyInputValue }</p>

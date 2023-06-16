@@ -31,7 +31,7 @@ function processEach(element: Node, view: ViewData, viewModule: ViewModuleData) 
 
   const elseViewCode = elseView ? `${elseView.name}View` : 'null';
 
-  const codeParts = (element.getAttribute('#') ?? '').split(':');
+  const codeParts = (element.getAttribute('_') ?? '').split(':');
   const eachCondition = codeParts.slice(1).join(':');
   const iteratorKey = codeParts[0].trim();
 
@@ -46,7 +46,7 @@ function processEach(element: Node, view: ViewData, viewModule: ViewModuleData) 
   }
 
   element.tagName = 'PLACEHOLDER';
-  element.removeAttribute('#');
+  element.removeAttribute('_');
 
   return true;
 }

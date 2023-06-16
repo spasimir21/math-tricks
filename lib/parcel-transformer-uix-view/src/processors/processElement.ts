@@ -2,6 +2,7 @@ import { processComponent, processComponentInit } from './component';
 import { processBooleanAttributes } from './booleanAttribute';
 import { processComponentTag } from './componentTag';
 import { processStyleProps } from './styleProp';
+import { processModifiers } from './modifiers';
 import { processComments } from './comment';
 import { processAttributes } from './attr';
 import { processIgnored } from './ignored';
@@ -16,7 +17,6 @@ import { Node } from 'node-html-parser';
 import { processEvents } from './event';
 import { isRemoved } from '../removed';
 import { processStyle } from './style';
-import { processAsset } from './asset';
 import { processProps } from './prop';
 import { processEach } from './_each';
 import { processText } from './text';
@@ -30,7 +30,6 @@ const PROCESSORS: Processor[] = [
   processComments,
   processText,
   processIgnored,
-  processAsset,
   processInsert,
   processStyle,
   processIf,
@@ -39,6 +38,7 @@ const PROCESSORS: Processor[] = [
   processAttributes,
   processBooleanAttributes,
   processStyleProps,
+  processModifiers,
   processClasses,
   processDirect,
   processEvents,

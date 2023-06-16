@@ -1,6 +1,6 @@
-<each #="y : range($.gridSettings.height)">
+<each _="y : range($.gridSettings.height)">
   <div class="row">
-    <each #="x : range($.gridSettings.width)">
+    <each _="x : range($.gridSettings.width)">
       <cell prop:position="$.y * $.gridSettings.width + $.x" />
     </each>
   </div>

@@ -18,7 +18,7 @@
   ],
   "repository": {
     "attribute-bindings": {
-      "begin": "((a|attr|ba|bool-attr|p|prop|s|shared|e|export|d|direct)?:|@|\\.|#)([a-zA-Z0-9\\-\\:\\#]+?)\\s*(=)\\s*('|\")",
+      "begin": "((a|attr|ba|bool-attr|p|prop|s|shared|e|export|d|direct)?:|@|\\.|#|\\*)([a-zA-Z0-9\\-\\:\\#\\!]+?)\\s*(=)\\s*('|\")",
       "end": "(\\5)",
       "beginCaptures": {
         "1": { "name": "punctuation" },
