@@ -85,8 +85,7 @@ function processText(node: Node, view: ViewData) {
     const placeholder = new HTMLElement('placeholder', {}, '', fragment, [0, 0]);
     const placeholderId = getElementViewId(placeholder);
 
-    view.instructions.push(`u.placeholder(e, '${placeholderId}', document.createTextNode(''))`);
-    view.instructions.push(`u.textContent(e['${placeholderId}'], () => (${part.slice(2, -1)}))`);
+    view.instructions.push(`u.textNode(e, '${placeholderId}', () => (${part.slice(2, -1)}))`);
 
     nodes.push(placeholder);
   }

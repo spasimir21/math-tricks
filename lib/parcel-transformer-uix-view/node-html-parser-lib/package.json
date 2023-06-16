@@ -2,8 +2,8 @@
 	"name": "node-html-parser",
 	"version": "6.1.5",
 	"description": "A very fast HTML parser, generating a simplified DOM, with basic element query support.",
-	"main": "_dist/index.js",
-	"types": "_dist/index.d.ts",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
 	"scripts": {
 		"compile": "tsc",
 		"build": "npm run compile:cjs && npm run compile:amd",
