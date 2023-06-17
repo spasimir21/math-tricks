@@ -19,11 +19,4 @@ If you want to run it in a development environment:
 
 # Uix.js
 
-This project uses a currently unfinished library of mine called **Uix.js**
-
-I've wanted to make such a library for a long time and decided that this competition
-is the perfect excuse to spend quite a bit of time on it. There are many features missing
-because I have mainly focused on the things that I would need in order to make the game.
-I hope that I can and will implement a lot of them in the future.
-
-The library is built on the principles of fully reactive programming.
+This project uses a currently unfinished library of mine called [Uix.js](https://github.com/spasimir21/uixjs)
