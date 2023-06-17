@@ -1,6 +1,6 @@
 import defineComponent from './playerNameInputs.view.html';
-import { Effect, State } from 'reactivity';
-import { Controller } from 'uix';
+import { Effect, State } from '@uixjs/reactivity';
+import { Controller } from '@uixjs/core';
 
 class PlayerNameInputsController extends Controller<
   { vsBot: boolean },

@@ -1,8 +1,8 @@
-import { registerDependency } from 'reactivity';
+import { registerDependency } from '@uixjs/reactivity';
 import defineComponent from './root.view.html';
 import { createRouter } from '../../router';
-import { Controller } from 'uix';
-import { Router } from 'router';
+import { Controller } from '@uixjs/core';
+import { Router } from '@uixjs/router';
 
 class RootController extends Controller {
   router: Router = null as any;

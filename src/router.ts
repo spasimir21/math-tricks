@@ -1,5 +1,5 @@
-import { Router } from 'router';
-import { Registry } from 'uix';
+import { Router } from '@uixjs/router';
+import { Registry } from '@uixjs/core';
 
 function createRouter(registry: Registry) {
   return new Router([

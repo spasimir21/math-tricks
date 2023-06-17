@@ -1,4 +1,4 @@
-import { Effect, Reactive, State } from 'reactivity';
+import { Effect, Reactive, State } from '@uixjs/reactivity';
 
 interface GameSaveData {
   boardSize: [number, number];

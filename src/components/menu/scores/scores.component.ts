@@ -1,5 +1,5 @@
 import defineComponent from './scores.view.html';
-import { Controller } from 'uix';
+import { Controller } from '@uixjs/core';
 
 class ScoresController extends Controller<{}, {}, { scores: Record<string, number> }> {
   resetScores() {

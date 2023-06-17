@@ -1,4 +1,4 @@
-import { SubscribableNode, TrackStack } from 'reactivity';
+import { SubscribableNode, TrackStack } from '@uixjs/reactivity';
 
 class ReactiveUInt8Array {
   private readonly nodes = {} as Record<number, SubscribableNode>;

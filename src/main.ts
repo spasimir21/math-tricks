@@ -1,6 +1,6 @@
 import rootComponent from './components/root/root.component';
 import { startFaviconSwitching } from './favicon';
-import { createRegistry } from 'uix';
+import { createRegistry } from '@uixjs/core';
 import './cellEncoding';
 
 const FAVICON_CYCLE = 10;

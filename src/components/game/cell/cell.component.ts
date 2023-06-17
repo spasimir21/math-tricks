@@ -1,8 +1,8 @@
 import { MathTricksSimulation } from '../../../simulation';
 import { decode, Operation } from '../../../cellEncoding';
 import defineComponent from './cell.view.html';
-import { Computed } from 'reactivity';
-import { Controller } from 'uix';
+import { Computed } from '@uixjs/reactivity';
+import { Controller } from '@uixjs/core';
 
 class CellController extends Controller<{ position: number }> {
   @Computed

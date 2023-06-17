@@ -1,8 +1,8 @@
 import { CellData, decode, encode, hasBeenUsed, Operation } from './cellEncoding';
 import { ReactiveUInt8Array } from './helpers/ReactiveUInt8Array';
+import { Reactive, State } from '@uixjs/reactivity';
 import { generateFullBoard } from './generator';
 import { deepClone } from './helpers/deepClone';
-import { Reactive, State } from 'reactivity';
 
 enum PlayState {
   Playing,

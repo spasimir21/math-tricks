@@ -1,6 +1,6 @@
 import defineComponent from './boardSizeSelector.view.html';
-import { Effect, State } from 'reactivity';
-import { Controller } from 'uix';
+import { Effect, State } from '@uixjs/reactivity';
+import { Controller } from '@uixjs/core';
 
 class BoardSizeSelectorController extends Controller<{}, { valid: boolean }, { width: number; height: number }> {
   @State

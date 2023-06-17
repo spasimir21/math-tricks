@@ -1,6 +1,6 @@
 import defineComponent from './botDifficultySelector.view.html';
-import { Computed, Effect, State } from 'reactivity';
-import { Controller } from 'uix';
+import { Computed, Effect, State } from '@uixjs/reactivity';
+import { Controller } from '@uixjs/core';
 
 class BotDifficultySelectorController extends Controller<{ cells: number }, {}, { difficulty: number }> {
   @State

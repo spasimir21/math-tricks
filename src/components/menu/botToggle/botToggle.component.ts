@@ -1,5 +1,5 @@
 import defineComponent from './botToggle.view.html';
-import { Controller } from 'uix';
+import { Controller } from '@uixjs/core';
 
 class BotToggleController extends Controller<{}, {}, { vsBot: boolean }> {
   toggle() {

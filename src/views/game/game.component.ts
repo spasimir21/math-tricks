@@ -1,11 +1,11 @@
 import { PlayState, Player, MathTricksSimulation } from '../../simulation';
 import gridComponent from '../../components/game/grid/grid.component';
+import { Computed, Effect } from '@uixjs/reactivity';
 import defineComponent from './game.view.html';
-import { Computed, Effect } from 'reactivity';
 import { $globalGameSave } from '../../save';
+import { Controller } from '@uixjs/core';
 import { Stamat } from '../../Stamat';
 import { CONFIG } from '../../config';
-import { Controller } from 'uix';
 
 class GameController extends Controller {
   simulation: MathTricksSimulation = null as any;

@@ -5,10 +5,10 @@ import botToggleComponent from '../../components/menu/botToggle/botToggle.compon
 import scoresComponent from '../../components/menu/scores/scores.component';
 import { GameSaveData, $globalGameSave } from '../../save';
 import { deepClone } from '../../helpers/deepClone';
+import { Computed, State } from '@uixjs/reactivity';
 import defineComponent from './menu.view.html';
-import { Computed, State } from 'reactivity';
-import { getRouter } from 'router';
-import { Controller } from 'uix';
+import { getRouter } from '@uixjs/router';
+import { Controller } from '@uixjs/core';
 
 class MenuController extends Controller {
   @State

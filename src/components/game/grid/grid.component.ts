@@ -1,8 +1,8 @@
+import { Effect, reactive, registerDependency } from '@uixjs/reactivity';
 import { GridSettings, GridSizeCalculator } from './GridSizeCalculator';
-import { Effect, reactive, registerDependency } from 'reactivity';
 import { cellComponent } from '../cell/cell.component';
 import defineComponent from './grid.view.html';
-import { Controller } from 'uix';
+import { Controller } from '@uixjs/core';
 
 const PADDING = 10;
 const CELL_GAP = 1;

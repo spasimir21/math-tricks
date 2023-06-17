@@ -1,5 +1,5 @@
 declare module '*.view.html' {
-  import { ComponentInfo } from 'uix';
+  import { ComponentInfo } from '@uixjs/core';
 
   export interface IncompleteComponentInfo {
     name: string;
