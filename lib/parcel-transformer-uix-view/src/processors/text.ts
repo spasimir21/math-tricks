@@ -82,7 +82,7 @@ function processText(node: Node, view: ViewData) {
       continue;
     }
 
-    const placeholder = new HTMLElement('placeholder', {}, '', fragment, [0, 0]);
+    const placeholder = new HTMLElement('plch', {}, '', fragment, [0, 0]);
     const placeholderId = getElementViewId(placeholder);
 
     view.instructions.push(`u.textNode(e, '${placeholderId}', () => (${part.slice(2, -1)}))`);

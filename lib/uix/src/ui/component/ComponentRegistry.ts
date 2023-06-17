@@ -27,8 +27,15 @@ class ComponentRegistry {
 
     this.componentInfos[componentName] = componentInfo;
 
-    for (const stylesheet of componentInfo.stylesheets) this.registry.styles.register(stylesheet);
-    for (const compInfo of componentInfo.dependencies) this.register(compInfo);
+    for (const stylesheet of componentInfo.stylesheets) {
+      const stylesheetRegistry = stylesheet.registry ? stylesheet.registry.styles : this.registry.styles;
+      stylesheetRegistry.register(stylesheet);
+    }
+
+    for (const compInfo of componentInfo.dependencies) {
+      const compRegistry = compInfo.registry ? compInfo.registry.components : this;
+      compRegistry.register(compInfo);
+    }
 
     if (componentName in this.componentInfoCallbacks) {
       for (const callback of this.componentInfoCallbacks[componentName]) callback(componentInfo);

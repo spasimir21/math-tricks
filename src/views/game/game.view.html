@@ -1,4 +1,8 @@
-<insert> import { PlayState } from '../../simulation'; </insert>
+<!-- prettier-ignore -->
+<insert>
+  import { PlayState } from '../../simulation';
+  import { getRouter } from 'router';
+</insert>
 
 <link rel="stylesheet" href="./game.style.scss" />
 
@@ -28,7 +32,7 @@
     <p #color="$.gameTurnTextColor" class="game-text">${ $.gameTurnText }</p>
   </if>
   <else>
-    <p class="game-end-button" @click="$.context.router.refresh()">REMATCH</p>
-    <p class="game-end-button" @click="$.context.router.goto({ route: 'menu' })">MENU</p>
+    <p class="game-end-button" @click="getRouter($.context).refresh()">REMATCH</p>
+    <p class="game-end-button" @click="getRouter($.context).goto({ route: 'menu' })">MENU</p>
   </else>
 </div>

@@ -7,8 +7,8 @@ import { GameSaveData, $globalGameSave } from '../../save';
 import { deepClone } from '../../helpers/deepClone';
 import defineComponent from './menu.view.html';
 import { Computed, State } from 'reactivity';
+import { getRouter } from 'router';
 import { Controller } from 'uix';
-import { Router } from 'router';
 
 class MenuController extends Controller {
   @State
@@ -35,7 +35,7 @@ class MenuController extends Controller {
   play() {
     if (!this.valid) return;
     $globalGameSave.data = this.gameSaveData;
-    (this.context.router as Router).goto({ route: 'game' });
+    getRouter(this.context).goto({ route: 'game' });
   }
 }
 

@@ -65,7 +65,7 @@ function processIf(element: Node, view: ViewData, viewModule: ViewModuleData) {
     markRemoved(elementChain[i]);
   }
 
-  element.tagName = 'PLACEHOLDER';
+  element.tagName = 'PLCH';
   element.removeAttribute('_');
 
   return true;

@@ -22,10 +22,10 @@ function processComponent(element: Node, view: ViewData, viewModule: ViewModuleD
 
   // prettier-ignore
   view.instructions.push(
-    `u.component(e, '${viewId}', '${viewModule.styleScopeId}', $, '${componentName}'${registryName ? `, '${registryName}'` : ''})`
+    `u.component(e, '${viewId}', $, '${componentName}'${registryName ? `, '${registryName}'` : ''})`
   );
 
-  element.tagName = 'PLACEHOLDER';
+  element.tagName = 'PLCH';
   (element as any)[$IS_COMPONENT] = true;
 
   return false;

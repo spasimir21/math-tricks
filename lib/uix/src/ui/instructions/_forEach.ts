@@ -1,7 +1,7 @@
 import { View, ViewInstance, viewToElement } from '../view';
 import { TrackStack, effect, reactive } from 'reactivity';
 import { Fragment } from '../fragment/Fragment';
-import { scope } from '../../helpers/scope';
+import { scope } from '../../scope';
 
 function _forEach(
   placeholder: HTMLElement,

@@ -45,7 +45,7 @@ function processEach(element: Node, view: ViewData, viewModule: ViewModuleData) 
     markRemoved(elseElement);
   }
 
-  element.tagName = 'PLACEHOLDER';
+  element.tagName = 'PLCH';
   element.removeAttribute('_');
 
   return true;

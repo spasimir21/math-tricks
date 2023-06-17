@@ -1,6 +1,6 @@
+import rootComponent from './components/root/root.component';
 import { startFaviconSwitching } from './favicon';
 import { createRegistry } from 'uix';
-import { Router } from 'router';
 import './cellEncoding';
 
 const FAVICON_CYCLE = 10;
@@ -17,20 +17,8 @@ mathTricksRegistry.components.register({
   load: () => import('./views/game/game.component')
 });
 
-const router = new Router([
-  {
-    name: 'menu',
-    path: '/',
-    component: { component: 'menu', registry: mathTricksRegistry }
-  },
-  {
-    name: 'game',
-    path: '/game',
-    component: { component: 'game', registry: mathTricksRegistry }
-  }
-]);
+mathTricksRegistry.components.register(rootComponent);
 
 window.addEventListener('DOMContentLoaded', () => {
   startFaviconSwitching(FAVICON_CYCLE * 1000);
-  router.bindTo(document.querySelector('#router-view') as HTMLDivElement);
 });

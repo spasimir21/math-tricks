@@ -209,7 +209,7 @@ const HTML_AND_SVG_ELEMENTS = new Set([
 ]);
 
 function isCustomComponent(element: HTMLElement): boolean {
-  if (element.tagName === 'COMPONENT' || element.tagName === 'PLACEHOLDER') return false;
+  if (element.tagName === 'COMPONENT' || element.tagName === 'PLCH') return false;
   if (element.hasAttribute('$nc')) return false;
 
   const tagName = element.tagName.toLowerCase();

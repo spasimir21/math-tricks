@@ -108,10 +108,10 @@ class UixComponent extends HTMLElement {
   kill() {
     if (this.isKilled) return;
 
-    this.view.cleanup();
+    if (this.view) this.view.cleanup();
     this.view = null as any;
 
-    this.controller.cleanup();
+    if (this.controller) this.controller.cleanup();
     this.controller = null as any;
 
     this.innerHTML = '';

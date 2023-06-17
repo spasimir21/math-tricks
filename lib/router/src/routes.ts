@@ -1,5 +1,6 @@
 import { cancelSpecialRegExpChars } from './helpers/cancelRegExpChars';
 import { ComponentInfo, DeferredComponentInfo, Registry } from 'uix';
+import { id } from './helpers/id';
 
 type RouteComponent =
   | string
@@ -70,6 +71,7 @@ function matchPath(pathname: string, path: RegExp) {
 }
 
 interface Route {
+  id: string;
   title: string | null;
   name: string;
   component: string;
@@ -98,6 +100,7 @@ function matchLocationToRoute(
   }
 
   const route: Route = {
+    id: id(),
     title: null,
     name: matchedRouteDef ? matchedRouteDef.name : '_fallback',
     component: matchedRouteDef ? matchedRouteDef.component : fallbackComponent,

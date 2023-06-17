@@ -1,4 +1,3 @@
-export * from './helpers/context';
 export * from './helpers/range';
 
 export * from './ui/component/ComponentRegistry';
@@ -32,4 +31,7 @@ export * from './ui/style/Stylesheet';
 export * from './ui/view';
 
 export * from './Controller';
+export * from './reference';
 export * from './Registry';
+export * from './context';
+export * from './scope';

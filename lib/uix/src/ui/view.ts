@@ -1,4 +1,5 @@
 import { Fragment } from './fragment/Fragment';
+import { scope } from '../scope';
 
 type ViewInstructionsFunction<T> = (elements: Record<string, HTMLElement>, data: T) => ((() => void) | void)[];
 
@@ -68,7 +69,7 @@ function instantiateView<T>(view: View<T>, data: T): ViewInstance<T> {
     element.removeAttribute('$');
   }
 
-  const cleanupFunctions = view.instructionsFunction(elements, data);
+  const cleanupFunctions = view.instructionsFunction(elements, scope({ styleScopeId: view.styleScopeId, view }, data));
   const cleanup = () => {
     for (const cleanupFunction of cleanupFunctions) {
       if (cleanupFunction == null) continue;

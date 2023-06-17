@@ -19,4 +19,14 @@ function context(object: any, prevContext: any) {
   });
 }
 
-export { context };
+function createContextValue<T>(name: string) {
+  const symbol = Symbol(name);
+
+  // prettier-ignore
+  return [
+    (context: any, value: T) => (context[symbol] = value),
+    (context: any) => context[symbol] as T
+  ] as const;
+}
+
+export { context, createContextValue };

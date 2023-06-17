@@ -1,21 +1,21 @@
 import { StylesheetInfo } from '../style/StylesheetInfo';
-import { Controller } from '../../Controller';
+import { Registry } from '../../Registry';
 import { View } from '../view';
 
 interface ComponentInfo {
   name: string;
   controller: any;
   view: View<any>;
-  stylesheets: StylesheetInfo[];
-  dependencies: (ComponentInfo | DeferredComponentInfo)[];
+  stylesheets: (StylesheetInfo & { registry?: Registry })[];
+  dependencies: ((ComponentInfo | DeferredComponentInfo) & { registry?: Registry })[];
 }
 
 interface IncompleteComponentInfo {
   name: string;
   controller: any;
   view: View<any>;
-  stylesheets?: StylesheetInfo[];
-  dependencies?: (ComponentInfo | DeferredComponentInfo)[];
+  stylesheets?: (StylesheetInfo & { registry?: Registry })[];
+  dependencies?: ((ComponentInfo | DeferredComponentInfo) & { registry?: Registry })[];
 }
 
 interface DeferredComponentInfo {
