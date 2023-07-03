@@ -1,13 +1,21 @@
 declare module '*.view.html' {
-  import { ComponentInfo } from '@uixjs/core';
+  import { IncompleteComponentInfo, View, StylesheetInfo } from '@uixjs/core';
 
-  export interface IncompleteComponentInfo {
-    name: string;
-    controller: any;
-    dependencies?: ComponentInfo['dependencies'];
-  }
+  type IncompleteComponentInfoWithoutView = Omit<IncompleteComponentInfo, 'view'>;
 
-  const defineComponent: (info: IncompleteComponentInfo) => ComponentInfo;
+  const defineComponent: (info: IncompleteComponentInfoWithoutView) => ComponentInfo;
+  const stylesheets: StylesheetInfo[];
+  const view: View<any>;
+
   export default defineComponent;
-  export { defineComponent, ComponentInfo };
+  export {
+    defineComponent,
+    view,
+    stylesheets,
+    ComponentInfo,
+    View,
+    StylesheetInfo,
+    IncompleteComponentInfo,
+    IncompleteComponentInfoWithoutView
+  };
 }
